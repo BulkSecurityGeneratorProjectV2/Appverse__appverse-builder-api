@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -164,7 +165,7 @@ public abstract class BuildExecutorWorker implements Runnable {
         if (currentLogFile == null) {
             try {
                 //TODO find a better place to store the log file
-                currentLogFile = File.createTempFile(currentBuildRequest.getChainId().toString() + "-" + currentBuildRequest.getId(), "log");
+                currentLogFile = Files.createTempFile(currentBuildRequest.getChainId().toString() + "-" + currentBuildRequest.getId(), "log").toFile();
             } catch (IOException e) {
                 log.warn("Could not create the temporary log file", e);
             }

@@ -44,6 +44,7 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -327,7 +328,7 @@ public class BuildChainResourceIntTest {
     @Test
     public void createBuildChainFromPayload() throws Exception {
         File nativeDemoDir = new ClassPathResource("demo/native").getFile();
-        File tempFile = File.createTempFile("payload-test", ".zip");
+        File tempFile = Files.createTempFile("payload-test", ".zip").toFile();
         tempFile.delete();
         ZipFile zipFile = new ZipFile(tempFile);
         ZipParameters parameters = new ZipParameters();
@@ -376,7 +377,7 @@ public class BuildChainResourceIntTest {
     @Test
     public void createBuildChainFromPayloadWithOptions() throws Exception {
         File nativeDemoDir = new ClassPathResource("demo/native").getFile();
-        File tempFile = File.createTempFile("payload-test", ".zip");
+        File tempFile = Files.createTempFile("payload-test", ".zip").toFile();
         tempFile.delete();
         ZipFile zipFile = new ZipFile(tempFile);
         ZipParameters parameters = new ZipParameters();
@@ -429,7 +430,7 @@ public class BuildChainResourceIntTest {
     @Test
     public void createBuildChainFromPayloadWithFlavor() throws Exception {
         File nativeDemoDir = new ClassPathResource("demo/native").getFile();
-        File tempFile = File.createTempFile("payload-test", ".zip");
+        File tempFile = Files.createTempFile("payload-test", ".zip").toFile();
         tempFile.delete();
         ZipFile zipFile = new ZipFile(tempFile);
         ZipParameters parameters = new ZipParameters();

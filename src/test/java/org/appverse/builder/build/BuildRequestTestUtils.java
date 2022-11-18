@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import static org.appverse.builder.domain.enumeration.BuildStatus.QUEUED;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,7 +52,7 @@ public class BuildRequestTestUtils {
     }
 
     public BuildChainDTO createBuildChainFromPayload(File nativeDemoDir) throws IOException, ZipException {
-        File tempFile = File.createTempFile("payload-test", ".zip");
+        File tempFile = Files.createTempFile("payload-test", ".zip").toFile();
         tempFile.delete();
         ZipFile zipFile = new ZipFile(tempFile);
         ZipParameters parameters = new ZipParameters();
